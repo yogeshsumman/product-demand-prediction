@@ -32,8 +32,14 @@ def result():
     model_path = r'C:\Users\LENOVO\Desktop\machine_learning projects\product demand prediction\sales_prediction_ml_model\sales_prediction _ml_model\models\lr.sav'
     model = joblib.load(model_path)
     y_pred = model.predict(x_std)
+    if y_pred >= 10000.000:
+        message = 'the product will be in high demand 🟩'
+    else:
+        message = 'will not be in high demand 🟥'
 
-    return jsonify({'prediction:':float(y_pred)})
+    return render_template('predict.html',y_pred=float(y_pred), message=message)
+
+    # return jsonify({'prediction:':float(y_pred)})
 
 if __name__=="__main__":
     app.run(debug=True,port=9457)
