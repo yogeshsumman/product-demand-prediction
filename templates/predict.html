@@ -9,36 +9,68 @@
 </head>
 
 <style>
-  p {
-    text-align: center;
-  }
 
   body {
-    background: #f2f2f2;
-    /* color:#ced4da */
-    background: linear-gradient(99.6deg, rgb(112, 128, 152) 10.6%, rgb(242, 227, 234) 32.9%, rgb(234, 202, 213) 52.7%, rgb(220, 227, 239) 72.8%, rgb(185, 205, 227) 81.1%, rgb(154, 180, 212) 102.4%);
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height: 100vh;
+    background: #0e1538;
   }
 
-  h1 {
-    text-align: center;
-    color: #1f2124;
+
+  .box {
+    position:relative;
+    width:300px;
+    height: 300px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background: rgba(0, 0, 0, 0.5);
+    overflow:hidden;
+    border-radius: 20px;
   }
 
-  .container {
-    margin: auto;
-    width: 36%;
-    border: 2px solid;
-    padding: 10px;
-    margin-top: 300px;
+  .box::before{
+    content:'';
+    position:absolute;
+    width:150px;
+    height:140%;
+    background: linear-gradient(#00ccff,#d400d4);
+    animation:animate 4s linear infinite;
+  }
+  .box::after{
+    content:'';
+    position: absolute;
+    inset: 4px;
+    background: #0e1538;
+    border-radius: 16px;
+  }
+  @keyframes animate
+  {
+    0%
+    {
+      transform:rotate(0deg);
+    }
+    100%
+    {
+      transform: rotate(360deg);
+    }
+  }
+
+  .box h1,p{
+    position: relative;
+    color: white;
+    font-size:1em;
+    z-index:10;
   }
 </style>
 
 <body>
-  <div class="container">
-    <h1>Product Prediction</h1>
+  <div class="box">
+    <!-- <h1>Product Prediction</h1> -->
     <p>{{message}}</p>
-    <p>{{y_pred}}</p>
+    <!-- <p>{{y_pred}}</p> -->
   </div>
 </body>
 
